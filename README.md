@@ -10,11 +10,15 @@ openssl req -noout -modulus -in ca/ca-req.csr | openssl md5
 ```
 
 ### Convert a DER file (.crt .cer .der) to PEM(.pem) ###
-```openssl x509 -inform der -in certificate.cer -out certificate.pem```
+```
+openssl x509 -inform der -in certificate.cer -out certificate.pem
+```
 
 
 ### Verifying a cert against a chain ###
-```openssl verify -CAfile "example.chain.crt" "example.crt"```
+```
+openssl verify -CAfile "example.chain.crt" "example.crt"
+```
 
 ### Cross-validating among CSR, cert, and private key: ###
 ```
