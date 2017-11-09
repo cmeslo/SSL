@@ -12,7 +12,7 @@ openssl genrsa -out ca/ca-key.pem 1024
 openssl req -new -out ca/ca-req.csr -key ca/ca-key.pem
 ```
 
-### 3. sign myself
+### 3. gen cert, sign by yourself
 ```
 openssl x509 -req -in ca/ca-req.csr -out ca/ca-cert.pem -signkey ca/ca-key.pem -days 3650
 ```
