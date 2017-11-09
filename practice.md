@@ -29,7 +29,7 @@ openssl genrsa -out server/server-key.pem 1024
 openssl req -new -out server/server-req.csr -key server/server-key.pem
 ```
 
-### 3. server's csr sign by CA
+### 3. gen cert, server's csr sign by CA
 ```
 openssl x509 -req -in server/server-req.csr -out server/server-cert.pem -CA ca/ca-cert.pem -CAkey ca/ca-key.pem -CAcreateserial -days 3650
 ```
