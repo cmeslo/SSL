@@ -6,6 +6,7 @@ Knowledge about ssl, all the content comes from the Internet.
 2. [About cert extension](https://github.com/cmeslo/SSL/blob/master/filename-extension.md)
 3. [Verify](https://github.com/cmeslo/SSL/blob/master/verify.md)
 4. [Test](https://github.com/cmeslo/SSL/blob/master/test.md)
+5. [Practice](https://github.com/cmeslo/SSL/blob/master/practice.md)
 
 
 Reference:
