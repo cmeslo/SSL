@@ -1,4 +1,4 @@
-# Practice with own CA
+# Practice with own CA (without pass pharse)
 
 ## CA
 
@@ -44,3 +44,62 @@ openssl genrsa -des3 -out key.pem 2048
 openssl req -new -x509 -key key.pem -out cert.pem -days 3650
 openssl pkcs12 -inkey key.pem -in cert.pem -export -out cert.pfx
 ```
+
+# Gen key
+[source](https://www.cnblogs.com/littleatp/p/5878763.html)
+
+## without pass pharse
+### 1. gen private key 
+```
+openssl genrsa -out rsa_private.key 2048
+```
+
+### 2. gen public key
+```
+openssl rsa -in rsa_private.key -pubout -out rsa_public.key
+```
+
+## with aes256 encrypted
+### 1. gen private key
+```
+openssl genrsa -aes256 -passout pass:123456 -out rsa_aes_private.key 2048
+```
+
+### 2. gen public key
+```
+openssl rsa -in rsa_aes_private.key -passin pass:123456 -pubout -out rsa_public.key
+```
+
+# Convert
+## Remove a passphrase from a private key
+```
+openssl rsa -in rsa_aes_private.key -passin pass:123456 -out rsa_private.key
+```
+
+## Add a passphrase to a private key
+```
+openssl rsa -in rsa_private.key -aes256 -passout pass:123456 -out rsa_aes_private.key
+```
+
+# Generate a self-signed certificate
+
+## gen RSA private key and self-signed cert
+```
+openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt
+```
+```req``` is request,
+```-newkey rsa:2048 rsa_private.key``` is gen private key (pkcs8 format),
+```-nodes``` means private key without pass pharse,
+```-x509``` is output cert,
+```-days 365``` is expired date
+
+after run this command, you will need to input cert owner information, or you can input as parameter:
+```
+openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt -subj "/C=MO/ST=MO/L=Macau/O=Org/OU=dev/CN=xxx.com/emailAddress=xx@xxx.com"
+```
+
+## gen cert with existed rsa private key
+```
+openssl req -new -x509 -days 365 -key rsa_private.key -out cert.crt
+```
+```-new``` is gen cert request, with ```-x509``` is output cert directly
