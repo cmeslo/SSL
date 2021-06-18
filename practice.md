@@ -71,12 +71,12 @@ openssl rsa -in rsa_aes_private.key -passin pass:123456 -pubout -out rsa_public.
 ```
 
 # Convert
-## Remove a passphrase from a private key
+## remove a passphrase from a private key
 ```
 openssl rsa -in rsa_aes_private.key -passin pass:123456 -out rsa_private.key
 ```
 
-## Add a passphrase to a private key
+## add a passphrase to a private key
 ```
 openssl rsa -in rsa_private.key -aes256 -passout pass:123456 -out rsa_aes_private.key
 ```
@@ -103,3 +103,8 @@ openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out
 openssl req -new -x509 -days 365 -key rsa_private.key -out cert.crt
 ```
 ```-new``` is gen cert request, with ```-x509``` is output cert directly
+
+## extract the public key from cert
+```
+openssl x509 -pubkey -noout -in cert.crt > public_key.pem
+```
