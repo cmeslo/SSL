@@ -95,8 +95,14 @@ openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out
 
 after run this command, you will need to input cert owner information, or you can input as parameter:
 ```
-openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt -subj "/C=MO/ST=MO/L=Macau/O=Org/OU=dev/CN=xxx.com/emailAddress=xx@xxx.com"
+openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt -subj "/C=XX/ST=XX/L=Xxxxx/O=Org/OU=dev/CN=xxx.com/emailAddress=xx@xxx.com"
 ```
+- CN: CommonName
+- OU: OrganizationalUnit
+- O: Organization
+- L: Locality
+- S: StateOrProvinceName
+- C: CountryName
 
 ## gen cert with existed rsa private key
 ```
