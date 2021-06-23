@@ -50,5 +50,5 @@ openssl x509 -in cert.pem -noout -text
 openssl x509 -in cert.pem -noout -serial
 openssl x509 -in cert.pem -noout -subject
 openssl x509 -in cert.pem -noout -fingerprint
-openssl x509 -in cert.pem -noout -enddate
+openssl x509 -in cert.pem -noout -startdate -enddate
 ```
