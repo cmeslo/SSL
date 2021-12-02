@@ -44,6 +44,28 @@ $ openssl dgst -sha256 -verify my-pub.pem -signature in.txt.sha256 in.txt
 Verified OK
 ```
 
+## Encrypt/Decrypt with base64
+
+### Encrypt
+
+```bash
+$ echo "passwordHAHA" | openssl rsautl -pubin -inkey public_key.pem -encrypt | base64
+
+JjVxxZGgst8iiJFTj7GvK/s43eB2GFgxIWT2jdizkJxMFGOvrDyBQHe8ueyNzHnSRUixQPrrLB+Z
+al0iC3ZLfC0ev1ndWxWZlyeAM/nHniJHXJ8dPjKVBNyCvuBrUnW3gHeguqBJot/OYZiz8O15c/bF
+9XWPgWfkuzZYVf6t+GbrKwzndd9DCxHQMRGcNH8VxbZSYzQz/LC1L5T1iUlXYGajnShSsBpfyL1e
+sXMv+4w/xdSCX4u54hxgPeWWc0uou1fkG1Ijl/R0JkCPfmHGFvy0LOCV599Df6V5NUxv8Rq5XFTZ
+G/suuHBpnVIF0T++H3kcgDkF5Rhyy0YAeWoplA==
+```
+
+### Decrypt
+
+```bash
+$ echo "JjVxxZGgst8iiJFTj7GvK/s43eB2GFgxIWT2jdizkJxMFGOvrDyBQHe8ueyNzHnSRUixQPrrLB+Zal0iC3ZLfC0ev1ndWxWZlyeAM/nHniJHXJ8dPjKVBNyCvuBrUnW3gHeguqBJot/OYZiz8O15c/bF9XWPgWfkuzZYVf6t+GbrKwzndd9DCxHQMRGcNH8VxbZSYzQz/LC1L5T1iUlXYGajnShSsBpfyL1esXMv+4w/xdSCX4u54hxgPeWWc0uou1fkG1Ijl/R0JkCPfmHGFvy0LOCV599Df6V5NUxv8Rq5XFTZG/suuHBpnVIF0T++H3kcgDkF5Rhyy0YAeWoplA==" | base64 -d | openssl rsautl -decrypt -inkey rsa_private.key
+
+passwordHAHA
+```
+
 # Display content
 ```
 openssl x509 -in cert.pem -noout -text
