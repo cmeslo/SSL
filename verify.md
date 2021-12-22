@@ -49,7 +49,7 @@ Verified OK
 ### Encrypt
 
 ```bash
-$ echo "passwordHAHA" | openssl rsautl -pubin -inkey public_key.pem -encrypt | base64
+$ echo -n "passwordHAHA" | openssl rsautl -pubin -inkey public_key.pem -encrypt | base64
 
 JjVxxZGgst8iiJFTj7GvK/s43eB2GFgxIWT2jdizkJxMFGOvrDyBQHe8ueyNzHnSRUixQPrrLB+Z
 al0iC3ZLfC0ev1ndWxWZlyeAM/nHniJHXJ8dPjKVBNyCvuBrUnW3gHeguqBJot/OYZiz8O15c/bF
