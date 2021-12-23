@@ -86,7 +86,7 @@ openssl rsa -in rsa_private.key -aes256 -passout pass:123456 -out rsa_aes_privat
 
 ## Generate RSA private key and self-signed cert
 ```
-openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt
+openssl req -newkey rsa:2048 -nodes -keyout private_key.pem -x509 -days 365 -out certificate.pem
 ```
 ```req``` is request,
 ```-newkey rsa:2048 rsa_private.key``` is gen private key (pkcs8 format),
@@ -96,7 +96,7 @@ openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out
 
 after run this command, you will need to input cert owner information, or you can input as parameter:
 ```
-openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt -subj "/C=XX/ST=XX/L=Xxxxx/O=Org/OU=dev/CN=xxx.com/emailAddress=xx@xxx.com"
+openssl req -newkey rsa:2048 -nodes -keyout private_key.pem -x509 -days 365 -out certificate.pem -subj "/C=XX/ST=XX/L=Xxxxx/O=Org/OU=dev/CN=xxx.com/emailAddress=xx@xxx.com"
 ```
 - CN: CommonName
 - OU: OrganizationalUnit
@@ -105,15 +105,20 @@ openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out
 - S: StateOrProvinceName
 - C: CountryName
 
-## Generate cert with existed rsa private key
+## Generate certificate with existed rsa private key
 ```
-openssl req -new -x509 -days 365 -key rsa_private.key -out cert.crt
+openssl req -new -x509 -days 365 -key private_key.pem -out certificate.pem
 ```
 ```-new``` is gen cert request, with ```-x509``` is output cert directly
 
-## Extract the public key from cert
+## Extract the public key from certificate
 ```
-openssl x509 -pubkey -noout -in cert.crt > public_key.pem
+openssl x509 -pubkey -noout -in certificate.pem > public_key.pem
+```
+
+## Combine your key and certificate in a PKCS#12 (P12) bundle
+```
+openssl pkcs12 -inkey private_key.pem -in certificate.pem -export -out certificate.p12
 ```
 
 # PFX
