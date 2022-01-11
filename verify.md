@@ -58,6 +58,15 @@ IX5FMzZQR3INE+pHaLEgbM52QYuJqelCsRpchrNZ+QfoyI55Qxe71m08UnkGw/nAmptXXlK4w7lH
 jrMK4wQfo9BYw3u+Nqg+lo8XNHYj0qLhRvdZaw==
 ```
 
+> Be careful:
+> ```
+> $ echo -n "password$HAHA"
+> password
+> 
+> $ echo -n "password\$HAHA"
+> password$HAHA
+> ```
+
 ### Decrypt
 
 ```bash
