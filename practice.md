@@ -143,7 +143,7 @@ openssl pkcs12 -in sample.pfx -nodes -out sample.key
 
 
 ### Get the Private Key from the key-pair
-
+> (windows env) It works fine on powershell, but not git-bash
 ```
 openssl rsa -in sample.key -out sample_private.key
 ```
