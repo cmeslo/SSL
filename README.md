@@ -16,3 +16,4 @@ Reference:
 * [About cert extension](http://www.cnblogs.com/guogangj/p/4118605.html)
 * [SSL Basic](http://csc.ocean-pioneer.com/docum/ssl_basic.html)
 * [How can I verify if TLS 1.2 is supported](https://serverfault.com/questions/638691/how-can-i-verify-if-tls-1-2-is-supported-on-a-remote-web-server-from-the-rhel-ce)
+* [Extracting the certificate and keys from a .pfx file - IBM Documentation](https://www.ibm.com/docs/en/arl/9.7?topic=certification-extracting-certificate-keys-from-pfx-file)
