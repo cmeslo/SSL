@@ -187,7 +187,7 @@ openssl pkcs12 -in certificate.p12 -noout -info
 
 -   Extract public key file from cert file
     ```
-    openssl x509 -pubkey -noout -in cert.pem  > pubkey.pem
+    openssl x509 -pubkey -noout -in cert.pem > pubkey.pem
     ```
 
 -   Convert .pfx file to .pem format
